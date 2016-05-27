@@ -45,4 +45,3 @@ pip_packages:
   - virtualenv
   - cffi
   - cryptography
-  - pypi
