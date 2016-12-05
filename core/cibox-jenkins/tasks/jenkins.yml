@@ -17,7 +17,7 @@
 # Install Jenkins
 - name: Install Jenkins
   sudo: yes
-  shell: "dpkg -i ~/jenkins.deb"
+  shell: "dpkg -i --debug=2000 ~/jenkins.deb"
   when: ansible_distribution in [ 'Debian', 'Ubuntu' ]
   register: jenkins_install
 
