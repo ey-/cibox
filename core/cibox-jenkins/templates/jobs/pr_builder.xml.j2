@@ -58,9 +58,9 @@
   <triggers>
     <org.jenkinsci.plugins.ghprb.GhprbTrigger plugin="ghprb@1.15-0">
       <spec>H/3 * * * *</spec>
-      <adminlist></adminlist>
+      <adminlist>ey-</adminlist>
       <allowMembersOfWhitelistedOrgsAsAdmin>true</allowMembersOfWhitelistedOrgsAsAdmin>
-      <orgslist>propeoplemd</orgslist>
+      <orgslist>ffw-de</orgslist>
       <cron>H/3 * * * *</cron>
       <triggerPhrase></triggerPhrase>
       <onlyTriggerPhrase>false</onlyTriggerPhrase>
@@ -159,7 +159,7 @@
       </extraVars>
     </org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder>
     <org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder plugin="ansible@0.5">
-      <playbook>/var/www/build${BUILD_NUMBER}/reinstall.yml</playbook>
+      <playbook>/var/www/build${BUILD_NUMBER}/cibox/reinstall.yml</playbook>
       <limit></limit>
       <tags></tags>
       <skippedTags></skippedTags>
@@ -201,7 +201,7 @@
         </org.jenkinsci.plugins.ansible.ExtraVar>
         <org.jenkinsci.plugins.ansible.ExtraVar>
           <key>site_url</key>
-          <value>http://{{ jenkins_server_ip }}/build${BUILD_NUMBER}</value>
+          <value>http://build${BUILD_NUMBER}.{{ jenkins_server_address }}</value>
           <hidden>false</hidden>
         </org.jenkinsci.plugins.ansible.ExtraVar>
         <org.jenkinsci.plugins.ansible.ExtraVar>
@@ -217,7 +217,7 @@
       </extraVars>
     </org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder>
     <org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder plugin="ansible@0.5">
-      <playbook>/var/www/build${BUILD_NUMBER}/sniffers.yml</playbook>
+      <playbook>/var/www/build${BUILD_NUMBER}/cibox/sniffers.yml</playbook>
       <limit></limit>
       <tags></tags>
       <skippedTags></skippedTags>
@@ -239,7 +239,7 @@
         </org.jenkinsci.plugins.ansible.ExtraVar>
         <org.jenkinsci.plugins.ansible.ExtraVar>
           <key>webroot</key>
-          <value>http://{{ jenkins_server_ip }}/build${BUILD_NUMBER}</value>
+          <value>http://build${BUILD_NUMBER}.{{ jenkins_server_address }}</value>
           <hidden>false</hidden>
         </org.jenkinsci.plugins.ansible.ExtraVar>
         <org.jenkinsci.plugins.ansible.ExtraVar>
@@ -260,7 +260,7 @@
       </extraVars>
     </org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder>
     <org.jenkinsci.plugins.ansible.AnsiblePlaybookBuilder plugin="ansible@0.5">
-      <playbook>/var/www/build${BUILD_NUMBER}/tests.yml</playbook>
+      <playbook>/var/www/build${BUILD_NUMBER}/cibox/tests.yml</playbook>
       <limit></limit>
       <tags></tags>
       <skippedTags></skippedTags>
@@ -281,8 +281,8 @@
           <hidden>false</hidden>
         </org.jenkinsci.plugins.ansible.ExtraVar>
         <org.jenkinsci.plugins.ansible.ExtraVar>
-          <key>behat_base_url</key>
-          <value>http://{{ jenkins_server_ip }}/build${BUILD_NUMBER}</value>
+          <key>base_url</key>
+          <value>http://build${BUILD_NUMBER}.{{ jenkins_server_address }}</value>
           <hidden>false</hidden>
         </org.jenkinsci.plugins.ansible.ExtraVar>
         <org.jenkinsci.plugins.ansible.ExtraVar>
@@ -296,8 +296,8 @@
           <hidden>false</hidden>
         </org.jenkinsci.plugins.ansible.ExtraVar>
         <org.jenkinsci.plugins.ansible.ExtraVar>
-          <key>behat_drupal_root</key>
-          <value>/var/www/build${BUILD_NUMBER}</value>
+          <key>drupal_root</key>
+          <value>/var/www/build${BUILD_NUMBER}/docroot</value>
           <hidden>false</hidden>
         </org.jenkinsci.plugins.ansible.ExtraVar>
         <org.jenkinsci.plugins.ansible.ExtraVar>

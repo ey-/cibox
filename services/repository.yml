@@ -6,8 +6,9 @@
 
   vars:
     cmf: drupal
-    repo_subfolder: ../FRESH_REPOSITORY
-    drupal_version: 7
+    repo_subfolder: ../d8_cibox
+    drupal_version: 8
+    composer_workflow: true
 
   roles:
       - { role: '../core/core-repository' }
