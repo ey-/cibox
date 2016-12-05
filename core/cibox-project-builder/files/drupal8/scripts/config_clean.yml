@@ -8,7 +8,8 @@
     - devops/reinstall/vars/environments/global_env.yml
   vars:
     profile: pp
-    staging: sites/default/config/staging
+    drupal_root: ../docroot
+    staging: ../config/staging
     exclude:
     # We should manually take care about core.extension.yml. It shouldn't contain
     # config_devel, devel, stage_file_proxy
@@ -33,7 +34,7 @@
       when: workflow_type == 'profile'
       synchronize:
         src: '{{ staging }}/'
-        dest: profiles/{{ profile }}/config/install
+        dest: "{{ drupal_root }}/profiles/{{ profile }}/config/install"
         delete: yes
         rsync_opts:
           - '--exclude=.htaccess'

@@ -25,13 +25,15 @@
       - {
         servername: "cibox",
         serveralias: "*.*",
-        documentroot: "/var/www"
+        documentroot: "/var/www",
+        extra_parameters: "VirtualDocumentRoot \"/var/www/%1/docroot\""
       }
     apache_vhosts_ssl:
       - {
         servername: "cibox",
         serveralias: "*.*",
         documentroot: "/var/www",
+        extra_parameters: "VirtualDocumentRoot \"/var/www/%1/docroot\"",
         certificate_file: "{{ cibox_ssl_folder }}/apache.crt",
         certificate_key_file: "{{ cibox_ssl_folder }}/apache.key",
       }

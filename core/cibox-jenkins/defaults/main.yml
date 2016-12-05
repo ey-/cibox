@@ -4,6 +4,7 @@ jenkins_admin_email: 'noreply@cibox.tools'
 # Jenkins server IP. Should be overridden outside of role.
 # "gather_facts" option should be enabled.
 jenkins_server_ip: "{{ ansible_default_ipv4.address }}"
+jenkins_server_address: "{{ jenkins_server_ip }}.xip.io"
 
 # GitHub configurations.
 github_url: https://github.com/NAME/REPOSITORY

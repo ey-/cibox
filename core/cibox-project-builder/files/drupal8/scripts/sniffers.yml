@@ -10,22 +10,23 @@
     workspace_root: .
     artifacts_file: commentinfo.md
     webroot: http://localhost
+    drupal_root: ../docroot
     installation_profile_name: pp
-    installation_profile_path: "profiles/{{ installation_profile_name }}"
+    installation_profile_path: "{{ drupal_root }}/profiles/{{ installation_profile_name }}"
     scan_security: false
     phpcs_extensions: php,inc,install,module
     phpcs_features_extensions: module
-    custom_modules_path: modules/custom/
-    custom_themes_path: themes/custom
-    features_path: modules/features
+    custom_modules_path: "{{ drupal_root }}/modules/custom/"
+    custom_themes_path: "{{ drupal_root }}/themes/custom"
+    features_path: "{{ drupal_root }}/modules/features"
     phpcs_modules_ignore:
-      - themes/custom/nonstandard
+      - "{{ drupal_root }}/themes/custom/nonstandard"
     phpcs_features_ignore:
-      - modules/features/nonstandard
+      - "{{ drupal_root }}/modules/features/nonstandard"
     phpcs_features_ignore_path: modules/features,*.pages_default.inc,*.panelizer.inc,*.features.menu_custom.inc,*.features.webform.inc,*.features.filter.inc,*.strongarm.inc,*.fpp_content_declarations.inc,*.panels_default.inc
     composer_dir: /usr/share/composer
     phpcs_bin: /usr/bin/phpcs
-    build_reports_dir: build_reports
+    build_reports_dir: "{{ drupal_root }}/build_reports"
 
     composer_global_require:
       - squizlabs/php_codesniffer=dev-master
