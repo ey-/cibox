@@ -40,6 +40,7 @@
     apache_mods_enabled:
       - rewrite.load
       - ssl.load
+      - vhost_alias.load
 
   pre_tasks:
     - name: Check if the playbook was executed with the runner

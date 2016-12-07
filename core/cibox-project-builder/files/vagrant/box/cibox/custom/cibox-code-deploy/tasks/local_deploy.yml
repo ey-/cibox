@@ -2,6 +2,12 @@
 - name: Generate commentinfo.md file
   shell: 'echo "===============" > {{ workspace }}/commentinfo.md'
 
+# Uncomment for composer_workflow
+#- name: Make sure vendors are installed
+#  shell: "composer install --prefer-dist"
+#  args:
+#    chdir: '{{ source }}'
+
 - name: Sync files into docroot
   shell: "mv {{ source }}/ {{ destination }}"
 

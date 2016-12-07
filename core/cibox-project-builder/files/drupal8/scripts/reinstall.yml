@@ -25,6 +25,12 @@
     when: workflow_type == "sql"
     tags: [ 'settings', 'pre-settings', 'sql-workflow' ]
 
+  - name: Run composer Install
+     shell: "composer install --prefer-dist"
+     args:
+       chdir: '..'
+     when: composer_installed is not defined
+
   - include: devops/reinstall/sql_workflow.yml
     when: workflow_type == "sql"
     tags: [ 'sql-workflow' ]
