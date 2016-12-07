@@ -26,7 +26,8 @@
     phpcs_features_ignore_path: modules/features,*.pages_default.inc,*.panelizer.inc,*.features.menu_custom.inc,*.features.webform.inc,*.features.filter.inc,*.strongarm.inc,*.fpp_content_declarations.inc,*.panels_default.inc
     composer_dir: /usr/share/composer
     phpcs_bin: /usr/bin/phpcs
-    build_reports_dir: "{{ drupal_root }}/build_reports"
+    build_report_path: build_reports
+    build_reports_dir: "{{ drupal_root }}/{{ build_report_path }}"
 
     composer_global_require:
       - squizlabs/php_codesniffer=dev-master
