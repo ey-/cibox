@@ -20,8 +20,8 @@ npm_packages:
 gem_packages:
   - scss-lint
 
-sniffers_apt_repos:
-  - ppa:chris-lea/node.js
+sniffers_apt_repos: []
+#  - ppa:chris-lea/node.js
 
 sniffers_apt_packages:
   - ruby1.9.1
