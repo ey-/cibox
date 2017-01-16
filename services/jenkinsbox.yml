@@ -1,0 +1,14 @@
+---
+# Do not run this playbook manually! Use 'provision.sh'.
+- hosts: all
+  gather_facts: yes
+  remote_user: "{{ server_remote_user }}"
+
+  pre_tasks:
+    - name: Check if the playbook was executed with the runner
+      fail:
+        msg: "Please, run this playbook with provision.sh."
+      when: server_ip is not defined
+
+  roles:
+    - { role: '../core/core-jenkinsbox' }

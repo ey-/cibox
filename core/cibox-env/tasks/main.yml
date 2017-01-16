@@ -1,0 +1,48 @@
+---
+- name: Recover from possible fail
+  shell: 'dpkg --configure -a --force-confdef --force-confold'
+  ignore_errors: yes
+
+- name: Update apt cache
+  apt: update_cache=yes
+  ignore_errors: yes
+
+- name: Setup initial packages onto clean system for ansible
+  apt: name={{item}} state=installed
+  # Installing sudo on small ubuntu install.
+  with_items:
+         - python3-simplejson
+         - sudo
+         - curl
+
+- name: Fixing logger not found
+  shell: "apt-get --reinstall install -y bsdutils"
+
+# We have to disable mail sending from CI box.
+# Does not create a link if sendmail is installed.
+- name: Check for sendmail.
+  file: path=/usr/sbin/sendmail src=/bin/true state=link force=no
+  become: true
+
+- name: Create ansible config directory
+  file: path=/etc/ansible state=directory mode=775
+  
+
+- name: Install apt repos
+  apt_repository: repo={{ item }} validate_certs=no
+  with_items: "{{ apt_repos }}"
+
+- name: Update apt
+  apt: update_cache=yes
+  ignore_errors: yes
+
+- name: Install packages
+  shell: apt-get -y install {{ apt_packages|selectattr('status', 'equalto', true)|map(attribute='name')|join(' ') }}
+
+- name: Install Pip
+  shell: pip3 install --upgrade pip
+
+- name: Install Pip packages
+  pip: name={{ item }} state=present
+  with_items: "{{ pip_packages }}"
+  become: true

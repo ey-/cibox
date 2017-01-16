@@ -1,0 +1,27 @@
+---
+jenkins_plugins:
+  - ansicolor
+  - token-macro
+  - ssh-agent
+  - plain-credentials
+  - credentials
+  - git-client
+  - git
+  - github-api
+  - github
+  - ghprb
+  - htmlpublisher
+  - jquery
+  - matrix-auth
+  - matrix-project
+  - project-description-setter
+  - ssh-credentials
+  - scm-api
+  - scripttrigger
+  - parameterized-trigger
+  - simple-theme-plugin
+  - ansible
+  - jobConfigHistory
+  - slack
+  - timestamper
+  - blueocean

@@ -1,0 +1,5 @@
+dependencies:
+  - { role: '../core/cibox-env', become: true}
+  - { role: '../core/cibox-swap', become: true}
+  - { role: '../core/facade-docker' }
+  - { role: '../core/facade-jenkins', become: true}

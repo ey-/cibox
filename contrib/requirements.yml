@@ -1,0 +1,16 @@
+---
+# In order to install/update contrib module, run followign command from root of project:
+#        ansible-galaxy install -n -f -r contrib/requirements.yml --roles-path contrib
+#
+# Contrib requirements list.
+#
+
+# - src: geerlingguy.php
+#   version: 3.4.4
+
+- src: angstwad.docker_ubuntu
+  version: v2.1.2
+
+- src: geerlingguy.jenkins
+
+- src: geerlingguy.java
