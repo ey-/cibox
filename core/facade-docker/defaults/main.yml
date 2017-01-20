@@ -5,3 +5,4 @@
 docker_group_members:
 - vagrant
 - jenkins
+- ubuntu

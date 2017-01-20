@@ -3,3 +3,4 @@ dependencies:
   - { role: '../core/cibox-swap', become: true}
   - { role: '../core/facade-docker' }
   - { role: '../core/facade-jenkins', become: true}
+  - { role: '../core/facade-apache'}

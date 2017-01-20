@@ -8,9 +8,11 @@
 # - src: geerlingguy.php
 #   version: 3.4.4
 
-- src: angstwad.docker_ubuntu
-  version: v2.1.2
+#- src: angstwad.docker_ubuntu
+#  version: v2.1.2
 
-- src: geerlingguy.jenkins
+#- src: geerlingguy.jenkins
 
-- src: geerlingguy.java
+#- src: geerlingguy.java
+
+- src: geerlingguy.apache
