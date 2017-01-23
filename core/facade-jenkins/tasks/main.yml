@@ -1,0 +1,3 @@
+---
+# Configure Jenkins init settings.
+- include: config.yml

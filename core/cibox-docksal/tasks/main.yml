@@ -1,0 +1,16 @@
+---
+- name: newgrp docker
+  command: newgrp docker
+
+- name: install docksal
+  become: true
+  get_url:
+    url: "{{ docksal_fin_url }}"
+    dest: "{{ docksal_location }}"
+    mode: 0447
+
+- name: update docksal
+  environment:
+    DOCKSAL_VHOST_PROXY_PORT_HTTP: "{{ docksal_port_http }}"
+    DOCKSAL_VHOST_PROXY_PORT_HTTPS: "{{ docksal_port_https }}"
+  command: "{{ docksal_location }} update"

@@ -1,0 +1,11 @@
+---
+#- name: Configure vhosts for jenkins.
+
+#- name: Configure vhosts for build-in instances.
+
+#- name: Configure vhosts for docker build instances.
+
+- name: Adjust permissions for /var/www dir.
+  file:
+    path: /var/www
+    mode: "o+rwx"

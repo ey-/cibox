@@ -1,0 +1,42 @@
+---
+apache_remove_default_vhost: true
+apache_mods_enabled:
+  - rewrite.load
+  - ssl.load
+  - proxy.conf
+  - proxy.load
+  - proxy_http.load
+  - proxy_fcgi.load
+  - proxy_balancer.load
+  - alias.load
+  - alias.conf
+  - vhost_alias.load
+  - slotmem_shm.load
+  - lbmethod_byrequests.load
+apache_vhosts:
+  # Additional properties:
+  # 'serveradmin, serveralias, allow_override, options, extra_parameters'.
+  - servername: "jenkins.{{ server_domain }}"
+    extra_parameters: "  ProxyPreserveHost On \n
+                         ProxyRequests Off \n
+                         ProxyPass \"/\" \"http://{{ jenkins_hostname }}:{{ jenkins_http_port }}/\" nocanon\n
+                         ProxyPassReverse \"/\" \"http://{{ jenkins_hostname }}:{{ jenkins_http_port }}/\" \n
+                         <Proxy *> \n
+                           AuthType basic \n
+                           AuthName \"jenkins\" \n
+                           AuthUserFile \"/etc/htpasswd/.jenkins\" \n
+                           Require valid-user \n
+                         </Proxy>"
+  - servername: "{{ server_domain }}"
+    serveralias: "*.{{ server_domain }}"
+    documentroot: "/var/www"
+    extra_parameters: "VirtualDocumentRoot /var/www/%1/docroot"
+  - servername: "build.{{ server_domain }}"
+    serveralias: "*.build.{{ server_domain }}"
+    extra_parameters: "<Proxy balancer://buildcluster> \n
+                       BalancerMember http://127.0.0.1:8080 \n
+                       </Proxy> \n
+                       ProxyPreserveHost On \n
+                       ProxyPass \"/\" balancer://buildcluster  \n
+                       ProxyPassReverse \"/\" balancer://buildcluster \n
+                       ProxyRequests Off \n"

@@ -1,0 +1,8 @@
+---
+docksal_port_http: 8080
+docksal_port_https: 8443
+docksal_fin_url: "https://raw.githubusercontent.com/docksal/docksal/develop/bin/fin"
+docksal_location: "/usr/local/bin/fin"
+
+docksal_environment_vars: "DOCKSAL_VHOST_PROXY_PORT_HTTP={{ docksal_port_http }} DOCKSAL_VHOST_PROXY_PORT_HTTPS={{ docksal_port_https }}"
+docksal_environment_vars: "DOCKSAL_VHOST_PROXY_PORT_HTTP=8080 DOCKSAL_VHOST_PROXY_PORT_HTTPS=8443"

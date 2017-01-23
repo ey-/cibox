@@ -1,4 +1,6 @@
 server_ip: 127.0.0.1:2222
+# If you don't have a domain available, use xip.to or nip.to as service.
+server_domain: cibox.local
 server_remote_user: ubuntu
 # You can use docksal, drupalvm or cibox as local_environment.
 local_environment: docksal
