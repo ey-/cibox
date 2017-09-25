@@ -9,14 +9,14 @@
     mode: 0755
     force: yes
 
-- name: Encrypt GitHub password
-  become: yes
-  action: command java -jar {{ jenkins_jar_location }} -s http://{{ jenkins_hostname }}:{{ jenkins_http_port }} groovy {{ jenkins_home }}/encrypt.groovy --username {{ jenkins_admin_username }} --password {{ jenkins_admin_password }}
-  register: encrypted_pass
-  notify: restart jenkins
-
-- name: Set encrypted password
-  set_fact: github_encrypted_password="{{ encrypted_pass.stdout }}"
+#- name: Encrypt GitHub password
+#  become: yes
+#  action: command java -jar {{ jenkins_jar_location }} -s http://{{ jenkins_hostname }}:{{ jenkins_http_port }} groovy {{ jenkins_home }}/encrypt.groovy --username {{ jenkins_admin_username }} --password {{ jenkins_admin_password }}
+#  register: encrypted_pass
+#  notify: restart jenkins
+#
+#- name: Set encrypted password
+#  set_fact: github_encrypted_password="{{ encrypted_pass.stdout }}"
 
 - name: Remove groovy script
   file:
@@ -66,16 +66,16 @@
 #  with_items: "{{ jenkins_users }}"
 
 # Automatically scan configs directory.
-- name: Copy Jenkins configs
-  template:
-    src: configs/{{ item | basename }}
-    dest: /var/lib/jenkins/{{ item | basename | regex_replace('\.j2','') }}
-    owner: jenkins
-    group: jenkins
-    force: yes
-  notify: restart jenkins
-  with_fileglob:
-    - ../templates/configs/*.j2
+#- name: Copy Jenkins configs
+#  template:
+#    src: configs/{{ item | basename }}
+#    dest: /var/lib/jenkins/{{ item | basename | regex_replace('\.j2','') }}
+#    owner: jenkins
+#    group: jenkins
+#    force: yes
+#  notify: restart jenkins
+#  with_fileglob:
+#    - ../templates/configs/*.j2
 
 - name: Create folder for htaccess file for jenkins
   file:

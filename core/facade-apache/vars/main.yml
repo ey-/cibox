@@ -27,8 +27,8 @@ apache_vhosts:
                            AuthUserFile \"/etc/htpasswd/.jenkins\" \n
                            Require valid-user \n
                          </Proxy>"
-  - servername: "{{ server_domain }}"
-    serveralias: "*.{{ server_domain }}"
+  - servername: "static.{{ server_domain }}"
+    serveralias: "*.static.{{ server_domain }}"
     documentroot: "/var/www"
     extra_parameters: "VirtualDocumentRoot /var/www/%1/docroot"
   - servername: "build.{{ server_domain }}"

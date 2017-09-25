@@ -7,12 +7,12 @@ github_token: BOT_ACCESS_TOKEN
 github_password: BOT_PASSWORD
 
 jenkins_jobs:
-#  - { name: 'BACKUP_PROD_DB', template: 'backup_prod_db.xml.j2', status: true }
-#  - { name: 'DEMO', template: 'demo.xml.j2', status: true }
-#  - { name: 'DISK_USAGE_TRIGGER', template: 'disk_usage_trigger.xml.j2', status: true }
+  - { name: 'BACKUP_PROD_DB', template: 'backup_prod_db.xml.j2', status: true }
+  - { name: 'DEMO', template: 'demo.xml.j2', status: true }
+  - { name: 'DISK_USAGE_TRIGGER', template: 'disk_usage_trigger.xml.j2', status: true }
   - { name: 'PR_BUILDER', template: 'pr_builder.xml.j2', status: true }
-#  - { name: 'SERVER_CLEANER', template: 'server_cleaner.xml.j2', status: true }
-#  - { name: 'SERVER_SECURITY_UPD', template: 'server_security.xml.j2', status: true }
+  - { name: 'SERVER_CLEANER', template: 'server_cleaner.xml.j2', status: true }
+  - { name: 'SERVER_SECURITY_UPD', template: 'server_security.xml.j2', status: true }
 
 jenkins_theme_css: https://cibox.github.io/cibox-jenkins-theme/cibox-theme.css
 jenkins_theme_js: https://cibox.github.io/cibox-jenkins-theme/cibox-theme.js

@@ -18,7 +18,7 @@ jenkins_plugins:
   - project-description-setter
   - ssh-credentials
   - scm-api
-  - scripttrigger
+#  - scripttrigger
   - parameterized-trigger
   - simple-theme-plugin
   - ansible
@@ -26,3 +26,6 @@ jenkins_plugins:
   - slack
   - timestamper
   - blueocean
+  - gitlab-merge-request-jenkins
+  - gitlab-hook
+  - gitlab-plugin

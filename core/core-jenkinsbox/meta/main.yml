@@ -4,4 +4,11 @@ dependencies:
   - { role: '../core/facade-docker' }
   - { role: '../core/facade-jenkins', become: true}
   - { role: '../core/facade-apache', become: true}
+  - { role: '../core/facade-memcached'}
+  - { role: '../core/facade-mysql'}
+  - { role: '../core/facade-php'}
+  - { role: '../core/facade-composer'}
+  - { role: '../core/cibox-security', become: true}
+  - { role: '../core/cibox-sniffers', become: true}
+  - { role: '../core/cibox-drush', become: true}
   - { role: '../core/cibox-docksal', when: local_environment == "docksal"}

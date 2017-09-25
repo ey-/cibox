@@ -43,3 +43,4 @@ pip_packages:
   - virtualenv
   - cffi
   - cryptography
+  - mysqlclient

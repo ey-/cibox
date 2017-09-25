@@ -1,6 +1,8 @@
 ---
-- name: newgrp docker
-  command: newgrp docker
+- name: Kill SSH to make sure group is applied
+  shell: sleep 1; pkill -u {{ ansible_ssh_user }} sshd
+  async: 3
+  poll: 2
 
 - name: install docksal
   become: true
@@ -10,7 +12,7 @@
     mode: 0447
 
 - name: update docksal
-  environment:
-    DOCKSAL_VHOST_PROXY_PORT_HTTP: "{{ docksal_port_http }}"
-    DOCKSAL_VHOST_PROXY_PORT_HTTPS: "{{ docksal_port_https }}"
-  command: "{{ docksal_location }} update"
+  raw: "{{ docksal_environment_vars }} {{ docksal_location }} update"
+
+- name: make sure docksal proxy runs
+  shell: "{{ docksal_environment_vars }} {{ docksal_location }} reset proxy"

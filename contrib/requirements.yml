@@ -15,4 +15,14 @@
 
 #- src: geerlingguy.java
 
-- src: geerlingguy.apache
+#- src: geerlingguy.apache
+
+#- src: geerlingguy.php
+
+#- src: geerlingguy.mysql
+
+#- src: geerlingguy.composer
+
+#- src: geerlingguy.memcached
+
+- src: geerlingguy.drush

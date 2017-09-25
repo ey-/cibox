@@ -1,0 +1,18 @@
+---
+- name: Install Security Testing
+  shell: "rsync -avz devops/modules/ {{ drupal_root }}/sites/all/modules/contrib/"
+  sudo: yes
+
+- name: Enable Security Review module
+  shell: "drush en -r {{ drupal_root }} -y security_review"
+
+- name: Creating build reports dir
+  shell: mkdir {{ build_reports_dir }}
+  ignore_errors: yes
+
+- name: Creating Security Review file
+  shell: echo " " >> {{ build_reports_dir }}/SecurityReview.txt
+
+- name: Run Security Review
+  shell: "drush -r {{ drupal_root }} secrev 2>&1 | grep error | tee -a {{ build_reports_dir }}/SecurityReview.txt"
+  sudo: yes
